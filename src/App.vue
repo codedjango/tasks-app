@@ -47,10 +47,6 @@ const removeTask = (id: string) => {
     tasks.value.splice(index, 1);
   }
 }
-
-const selectedFilter = (filterType: TaskFilter) => {
-  filter.value = filterType;
-}
 </script>
 
 <template>
@@ -61,9 +57,9 @@ const selectedFilter = (filterType: TaskFilter) => {
       <h3 v-if="!tasks.length">Add a task to get started.</h3>
       <h3 v-else>{{ totalDone }} / {{ tasks.length }} tasks completed</h3>
       <div class="button-container" v-if="tasks.length">
-        <FilterButton :filter-type="'all'" @selected-filter="selectedFilter" :current-filter="filter"/>
-        <FilterButton :filter-type="'todo'" @selected-filter="selectedFilter" :current-filter="filter"/>
-        <FilterButton :filter-type="'done'" @selected-filter="selectedFilter" :current-filter="filter"/>
+        <FilterButton filter-type="all" v-model:f-type="filter"/>
+        <FilterButton filter-type="todo" v-model:f-type="filter"/>
+        <FilterButton filter-type="done" v-model:f-type="filter"/>
       </div>
     </div>
     <TaskList :tasks="filteredTasks" @toggle-done="toggleDone" @remove-task="removeTask"/>
