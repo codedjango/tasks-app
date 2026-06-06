@@ -7,13 +7,13 @@ const props = defineProps<{
   filterType: TaskFilter
 }>()
 
-const selectFilter = (): void => {
+const updateFilter = (): void => {
   fType.value = props.filterType;
 };
 </script>
 
 <template>
-  <button @click="selectFilter" :class="fType === props.filterType ? 'contrast' : 'secondary'">
+  <button @click="updateFilter" :class="fType === props.filterType ? 'contrast' : 'secondary'">
     {{ filterType }}
   </button>
 </template>
