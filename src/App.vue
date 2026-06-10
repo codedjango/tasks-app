@@ -62,7 +62,7 @@ const removeTask = (id: string) => {
 				v-if="tasks.length"
 			>
 				<FilterButton
-					:taskFilters="TASK_FILTERS"
+					:task-filters="TASK_FILTERS"
 					v-model:f-type="filter"
 				/>
 			</div>
