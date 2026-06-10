@@ -1,2 +1,0 @@
-minimumReleaseAgeExclude:
-  - '@types/node@25.9.2'
