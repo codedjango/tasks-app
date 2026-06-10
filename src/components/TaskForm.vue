@@ -8,13 +8,14 @@ const emit = defineEmits<{
 	addTask: [newTaskStr: string]
 }>()
 
-const handleSubmit = (): void => {
+const handleSubmit = (e: Event): void => {
 	if (!newTask.value.trim()) {
 		error.value = 'Task cannot be empty'
 		return
 	}
 	emit('addTask', newTask.value.trim())
-	newTask.value = ''
+	const form = e.target as HTMLFormElement
+	form.reset()
 }
 </script>
 
