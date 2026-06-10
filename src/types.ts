@@ -4,5 +4,5 @@ export interface Task {
 	done: boolean
 }
 
-export type TaskFilter = 'all' | 'done' | 'todo'
 export const TASK_FILTERS = ['all', 'done', 'todo'] as const
+export type TaskFilter = (typeof TASK_FILTERS)[number]

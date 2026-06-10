@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import FilterButton from '@/components/FilterButton.vue'
 import TaskForm from '@/components/TaskForm.vue'
 import TaskList from '@/components/TaskList.vue'
-import { TASK_FILTERS, type Task, type TaskFilter } from '@/types.ts'
+import { TASK_FILTERS, type Task, type TaskFilter } from '@/types'
 
 const message = ref<string>('Tasks App')
 const tasks = ref<Task[]>([])
