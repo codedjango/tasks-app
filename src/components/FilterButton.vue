@@ -1,25 +1,26 @@
 <script setup lang="ts">
-import type {TaskFilter} from "@/types.ts";
+import type { TaskFilter } from '@/types.ts'
 
-const fType = defineModel<TaskFilter>('fType', {default: 'all'})
+const currentFilter = defineModel<TaskFilter>('fType', { default: 'all' })
 
-const props = defineProps<{
-  filterType: TaskFilter
+defineProps<{
+	taskFilters: readonly TaskFilter[]
 }>()
 
-const updateFilter = (): void => {
-  fType.value = props.filterType;
-};
+const updateFilter = (filter: TaskFilter): void => {
+	currentFilter.value = filter
+}
 </script>
 
 <template>
-  <button @click="updateFilter" :class="fType === props.filterType ? 'contrast' : 'secondary'">
-    {{ filterType }}
-  </button>
+	<button
+		v-for="(filter, index) in taskFilters"
+		:key="index"
+		@click="updateFilter(filter)"
+		:class="currentFilter === filter ? 'contrast' : 'secondary'"
+	>
+		{{ filter ? filter.charAt(0).toUpperCase() + filter.slice(1) : filter }}
+	</button>
 </template>
 
-<style scoped>
-button {
-  text-transform: capitalize;
-}
-</style>
+<style scoped></style>
